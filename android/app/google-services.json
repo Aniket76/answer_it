@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "411087374485",
+    "project_id": "answer-it-d0b0d",
+    "storage_bucket": "answer-it-d0b0d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411087374485:android:c384401be1b6015e23f39c",
+        "android_client_info": {
+          "package_name": "com.aniketvishal.answer_it"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411087374485-2l4m5bdseib4rmv7sp7hlc6a5neqtoaj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYkudZvxrqDGW4Up9Qz4QhE_XHXfTZxRQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411087374485-2l4m5bdseib4rmv7sp7hlc6a5neqtoaj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "411087374485-icgri6rtsipif364ke7rhrl0pml98af8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.aniketvishal.answerIt"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
