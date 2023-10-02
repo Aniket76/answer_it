@@ -1,33 +1,53 @@
+import 'package:answer_it/common/injection.dart';
+import 'package:answer_it/presentation/manager/route_manager.dart';
+import 'package:answer_it/presentation/views/home/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
-  final String name;
-  const HomeScreen({super.key, required this.name});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+var cubit = getIt<HomeCubit>();
+
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Home Screen',
-        ),
-        backgroundColor: Colors.orange,
-      ),
-      body: Column(
-        children: [
-          Text('Welcome'),
-          OutlinedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text('Go back to Login'),
+    return BlocProvider(
+      create: (context) {
+        return cubit;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Home Screen',
           ),
-        ],
+          backgroundColor: Colors.orange,
+        ),
+        body: Column(
+          children: [
+            Text('Welcome'),
+            BlocBuilder<HomeCubit, HomeState>(buildWhen: (p, c) {
+              return p.isUserLoggedIn != c.isUserLoggedIn;
+            }, builder: (context, state) {
+              return OutlinedButton(
+                onPressed: () {
+                  cubit.signOut();
+                  if (!(state.isUserLoggedIn)) {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        MobileRoutes.loginRoute, (route) => false);
+                  } else {
+                    debugPrint('Something went wrong');
+                  }
+                },
+                child: Text('Sign Out'),
+              );
+            }),
+          ],
+        ),
       ),
     );
   }

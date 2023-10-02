@@ -22,7 +22,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController dobController = TextEditingController();
 
-  void createAccount() async {
+  Future<bool> createAccount() async {
     if (emailController.text.isNotEmpty &&
         passwordController.text.isNotEmpty &&
         nameController.text.isNotEmpty &&
@@ -31,13 +31,17 @@ class SignUpCubit extends Cubit<SignUpState> {
           emailController.text, passwordController.text);
 
       if (isRegister) {
-        await _updateUserUseCase.updateUser(UserModel(
+        return await _updateUserUseCase.updateUser(UserModel(
             name: nameController.text,
             email: emailController.text,
             dob: dobController.text));
+      } else {
+        debugPrint('Account not created');
+        return false;
       }
     } else {
       debugPrint('Enter email or password');
+      return false;
     }
   }
 }

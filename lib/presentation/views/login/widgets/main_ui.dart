@@ -1,5 +1,6 @@
 import 'package:answer_it/presentation/manager/route_manager.dart';
 import 'package:answer_it/presentation/views/login/cubit/login_cubit.dart';
+import 'package:answer_it/presentation/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,38 +34,21 @@ Widget mainUI({required LoginCubit cubit, required BuildContext context}) {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              SizedBox(
-                width: double.infinity,
-                height: 60,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(MobileRoutes.signInRoute);
-                  },
-                  style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                  ))),
-                  child: Text("Sign In"),
-                ),
+              CustomButton(
+                buttonText: 'Sign In',
+                onTap: () {
+                  Navigator.of(context).pushNamed(MobileRoutes.signInRoute);
+                },
               ),
               const SizedBox(
                 height: 16,
               ),
-              SizedBox(
-                width: double.infinity,
-                height: 60,
-                child: OutlinedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(MobileRoutes.signUpRoute);
-                  },
-                  style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                  ))),
-                  child: Text("Create an Account"),
-                ),
+              CustomButton(
+                buttonText: 'Create Account',
+                onTap: () {
+                  Navigator.of(context).pushNamed(MobileRoutes.signUpRoute);
+                },
+                isSolidButton: false,
               ),
             ],
           ),
