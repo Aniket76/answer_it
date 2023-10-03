@@ -13,7 +13,7 @@ class SplashCubit extends Cubit<SplashState> {
 
   void isUserLoggedIn() async {
     var user = FirebaseAuth.instance.currentUser;
-    await Future.delayed(const Duration(seconds: 10));
+    await Future.delayed(const Duration(seconds: 3));
     emit(state.copyWith(isUserLoggedIn: user != null));
     // if (user != null) {
     //   Navigator.of(context)
