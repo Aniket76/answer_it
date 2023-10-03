@@ -28,7 +28,8 @@ import '../domain/use_cases/user_use_cases/sign_up_usecase.dart' as _i17;
 import '../domain/use_cases/user_use_cases/update_user_usecase.dart' as _i18;
 import '../presentation/views/home/cubit/home_cubit.dart' as _i19;
 import '../presentation/views/login/cubit/login_cubit.dart' as _i3;
-import '../presentation/views/sign_up/cubit/sign_up_cubit.dart' as _i20;
+import '../presentation/views/sign_in/cubit/sign_in_cubit.dart' as _i20;
+import '../presentation/views/sign_up/cubit/sign_up_cubit.dart' as _i21;
 import '../presentation/views/splash/cubit/splash_cubit.dart' as _i4;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -65,7 +66,9 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i18.UpdateUserUseCase>(
         () => _i18.UpdateUserUseCase(gh<_i12.UserRepository>()));
     gh.factory<_i19.HomeCubit>(() => _i19.HomeCubit(gh<_i16.SignOutUseCase>()));
-    gh.factory<_i20.SignUpCubit>(() => _i20.SignUpCubit(
+    gh.factory<_i20.SignInCubit>(
+        () => _i20.SignInCubit(gh<_i15.SignInUseCase>()));
+    gh.factory<_i21.SignUpCubit>(() => _i21.SignUpCubit(
           gh<_i17.SignUpUseCase>(),
           gh<_i18.UpdateUserUseCase>(),
         ));
