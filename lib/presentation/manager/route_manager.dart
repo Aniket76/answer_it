@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 
 class RouteManager {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
-    var args = settings.arguments;
+    // var args = settings.arguments;
     switch (settings.name) {
       case MobileRoutes.initialRoute:
         return MaterialPageRoute(builder: (_) => SplashScreen());
       case MobileRoutes.loginRoute:
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case MobileRoutes.signInRoute:
-        return MaterialPageRoute(builder: (_) => const SignInScreen());
+        return MaterialPageRoute(builder: (_) => SignInScreen());
       case MobileRoutes.signUpRoute:
         return MaterialPageRoute(builder: (_) => SignUpScreen());
       case MobileRoutes.homeRoute:

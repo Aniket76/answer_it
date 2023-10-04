@@ -34,8 +34,8 @@ class _HomeScreenState extends State<HomeScreen> {
               return p.isUserLoggedIn != c.isUserLoggedIn;
             }, builder: (context, state) {
               return OutlinedButton(
-                onPressed: () {
-                  cubit.signOut();
+                onPressed: () async {
+                  await cubit.signOut();
                   if (!(state.isUserLoggedIn)) {
                     Navigator.of(context).pushNamedAndRemoveUntil(
                         MobileRoutes.loginRoute, (route) => false);

@@ -1,12 +1,13 @@
 import 'package:answer_it/common/injection.dart';
 import 'package:answer_it/presentation/manager/route_manager.dart';
 import 'package:answer_it/presentation/views/sign_up/cubit/sign_up_cubit.dart';
+import 'package:answer_it/presentation/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
 
-  var cubit = getIt<SignUpCubit>();
+  final cubit = getIt<SignUpCubit>();
 
   @override
   Widget build(BuildContext context) {
@@ -61,28 +62,19 @@ class SignUpScreen extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-            SizedBox(
-              width: double.infinity,
-              height: 60,
-              child: ElevatedButton(
-                onPressed: () async {
-                  var isLoggedIn = await cubit.createAccount();
-                  if (isLoggedIn) {
-                    Navigator.of(context).pushNamedAndRemoveUntil(
-                        MobileRoutes.homeRoute,
-                        (Route<dynamic> route) => false);
-                  } else {
-                    debugPrint('Something went wrong');
-                  }
-                },
-                style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                ))),
-                child: const Text("Create Account"),
-              ),
-            ),
+            CustomButton(
+              onTap: () async {
+                var isLoggedIn = await cubit.createAccount();
+                if (isLoggedIn) {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      MobileRoutes.homeRoute, (Route<dynamic> route) => false);
+                } else {
+                  debugPrint('Something went wrong');
+                }
+              },
+              buttonText: 'Create Account',
+              buttonColor: Colors.blueAccent.shade100,
+            )
           ]),
         ),
       ),

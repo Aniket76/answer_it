@@ -1,4 +1,3 @@
-import 'package:answer_it/data/models/user_model.dart';
 import 'package:answer_it/domain/use_cases/user_use_cases/sign_in_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

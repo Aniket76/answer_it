@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class SplashScreen extends StatelessWidget {
   SplashScreen({super.key});
 
-  var cubit = getIt<SplashCubit>();
+  final cubit = getIt<SplashCubit>();
 
   @override
   Widget build(BuildContext context) {

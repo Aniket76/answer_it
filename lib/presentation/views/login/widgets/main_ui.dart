@@ -2,7 +2,6 @@ import 'package:answer_it/presentation/manager/route_manager.dart';
 import 'package:answer_it/presentation/views/login/cubit/login_cubit.dart';
 import 'package:answer_it/presentation/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 Widget mainUI({required LoginCubit cubit, required BuildContext context}) {
   final List<Color> _background = [
