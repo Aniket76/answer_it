@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:answer_it/data/models/user_model.dart';
 import 'package:answer_it/domain/use_cases/user_use_cases/sign_up_usecase.dart';
 import 'package:answer_it/domain/use_cases/user_use_cases/update_user_usecase.dart';
@@ -23,6 +25,22 @@ class SignUpCubit extends Cubit<SignUpState> {
   TextEditingController dobController = TextEditingController();
 
   Future<bool> createAccount() async {
+    if (nameController.text.isEmpty) {
+      emit(state.copyWith(nameError: 'Name can\'t be empty'));
+    }
+
+    if (emailController.text.isEmpty) {
+      emit(state.copyWith(emailError: 'Email can\'t be empty'));
+    }
+
+    if (passwordController.text.isEmpty) {
+      emit(state.copyWith(passwordError: 'Password can\'t be empty'));
+    }
+
+    if (dobController.text.isEmpty) {
+      emit(state.copyWith(dobError: 'DOB can\'t be empty'));
+    }
+
     if (emailController.text.isNotEmpty &&
         passwordController.text.isNotEmpty &&
         nameController.text.isNotEmpty &&

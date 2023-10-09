@@ -16,19 +16,29 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SignUpState {
+  String? get nameError => throw _privateConstructorUsedError;
+  String? get emailError => throw _privateConstructorUsedError;
+  String? get passwordError => throw _privateConstructorUsedError;
+  String? get dobError => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String? nameError, String? emailError,
+            String? passwordError, String? dobError)
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(String? nameError, String? emailError,
+            String? passwordError, String? dobError)?
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String? nameError, String? emailError,
+            String? passwordError, String? dobError)?
+        initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +58,10 @@ mixin _$SignUpState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SignUpStateCopyWith<SignUpState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +69,12 @@ abstract class $SignUpStateCopyWith<$Res> {
   factory $SignUpStateCopyWith(
           SignUpState value, $Res Function(SignUpState) then) =
       _$SignUpStateCopyWithImpl<$Res, SignUpState>;
+  @useResult
+  $Res call(
+      {String? nameError,
+      String? emailError,
+      String? passwordError,
+      String? dobError});
 }
 
 /// @nodoc
@@ -66,13 +86,48 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? nameError = freezed,
+    Object? emailError = freezed,
+    Object? passwordError = freezed,
+    Object? dobError = freezed,
+  }) {
+    return _then(_value.copyWith(
+      nameError: freezed == nameError
+          ? _value.nameError
+          : nameError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emailError: freezed == emailError
+          ? _value.emailError
+          : emailError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passwordError: freezed == passwordError
+          ? _value.passwordError
+          : passwordError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dobError: freezed == dobError
+          ? _value.dobError
+          : dobError // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
+abstract class _$$_InitialCopyWith<$Res> implements $SignUpStateCopyWith<$Res> {
   factory _$$_InitialCopyWith(
           _$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? nameError,
+      String? emailError,
+      String? passwordError,
+      String? dobError});
 }
 
 /// @nodoc
@@ -81,51 +136,119 @@ class __$$_InitialCopyWithImpl<$Res>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? nameError = freezed,
+    Object? emailError = freezed,
+    Object? passwordError = freezed,
+    Object? dobError = freezed,
+  }) {
+    return _then(_$_Initial(
+      nameError: freezed == nameError
+          ? _value.nameError
+          : nameError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emailError: freezed == emailError
+          ? _value.emailError
+          : emailError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passwordError: freezed == passwordError
+          ? _value.passwordError
+          : passwordError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dobError: freezed == dobError
+          ? _value.dobError
+          : dobError // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Initial extends _Initial {
-  const _$_Initial() : super._();
+  const _$_Initial(
+      {this.nameError = null,
+      this.emailError = null,
+      this.passwordError = null,
+      this.dobError = null})
+      : super._();
+
+  @override
+  @JsonKey()
+  final String? nameError;
+  @override
+  @JsonKey()
+  final String? emailError;
+  @override
+  @JsonKey()
+  final String? passwordError;
+  @override
+  @JsonKey()
+  final String? dobError;
 
   @override
   String toString() {
-    return 'SignUpState.initial()';
+    return 'SignUpState.initial(nameError: $nameError, emailError: $emailError, passwordError: $passwordError, dobError: $dobError)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType &&
+            other is _$_Initial &&
+            (identical(other.nameError, nameError) ||
+                other.nameError == nameError) &&
+            (identical(other.emailError, emailError) ||
+                other.emailError == emailError) &&
+            (identical(other.passwordError, passwordError) ||
+                other.passwordError == passwordError) &&
+            (identical(other.dobError, dobError) ||
+                other.dobError == dobError));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, nameError, emailError, passwordError, dobError);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String? nameError, String? emailError,
+            String? passwordError, String? dobError)
+        initial,
   }) {
-    return initial();
+    return initial(nameError, emailError, passwordError, dobError);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(String? nameError, String? emailError,
+            String? passwordError, String? dobError)?
+        initial,
   }) {
-    return initial?.call();
+    return initial?.call(nameError, emailError, passwordError, dobError);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String? nameError, String? emailError,
+            String? passwordError, String? dobError)?
+        initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(nameError, emailError, passwordError, dobError);
     }
     return orElse();
   }
@@ -160,6 +283,23 @@ class _$_Initial extends _Initial {
 }
 
 abstract class _Initial extends SignUpState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial(
+      {final String? nameError,
+      final String? emailError,
+      final String? passwordError,
+      final String? dobError}) = _$_Initial;
   const _Initial._() : super._();
+
+  @override
+  String? get nameError;
+  @override
+  String? get emailError;
+  @override
+  String? get passwordError;
+  @override
+  String? get dobError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+      throw _privateConstructorUsedError;
 }

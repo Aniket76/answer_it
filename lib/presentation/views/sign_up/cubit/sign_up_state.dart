@@ -4,5 +4,10 @@ part of 'sign_up_cubit.dart';
 class SignUpState with _$SignUpState {
   const SignUpState._();
 
-  const factory SignUpState.initial() = _Initial;
+  const factory SignUpState.initial({
+    @Default(null) String? nameError,
+    @Default(null) String? emailError,
+    @Default(null) String? passwordError,
+    @Default(null) String? dobError,
+  }) = _Initial;
 }
