@@ -1,3 +1,4 @@
+import 'package:answer_it/common/data_resource/data_resource.dart';
 import 'package:answer_it/domain/use_cases/user_use_cases/sign_in_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,15 +17,25 @@ class SignInCubit extends Cubit<SignInState> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  Future<String> signInUser() async {
+  Future<void> signInUser() async {
+    emit(state.copyWith(signInResource: const DataResource.loading()));
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-      var isSignedIn = await _signInUseCase.signInWithEmailPassword(
-          emailController.text, passwordController.text);
+      _signInUseCase.invoke(
+        callback: (resource) {
+          emit(state.copyWith(signInResource: resource));
+          // if (resource.isSuccess()) {
+          //   // NavigationManager.gotoOtpScreen(phoneNumber, resource.data);
+          // }
+        },
+        input:
+            SignInWithEmailInput(emailController.text, passwordController.text),
+      );
 
-      return isSignedIn;
+      // return isSignedIn;
     } else {
       debugPrint('Enter email or password');
-      return 'Something went wrong';
+      emit(state.copyWith(signInResource: const DataResource.initial()));
+      // return 'Something went wrong';
     }
   }
 }
