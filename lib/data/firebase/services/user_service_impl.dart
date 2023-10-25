@@ -16,19 +16,23 @@ class UserServiceImpl extends UserService {
   }
 
   @override
-  Future<bool> signInWithEmailPassword(
+  Future<String> signInWithEmailPassword(
       String emailAddress, String password) async {
     try {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: emailAddress, password: password);
-      return Future.value(true);
+      // return Future.value(true);
+      return Future.value('Sign In Successful');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
+        return Future.value('No user found for that email.');
       } else if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
+        return Future.value('Wrong password provided for that user.');
       }
-      return Future.value(false);
+      // return Future.value(false);
+      return Future.value('Error in signIn, please try after some time.');
     }
   }
 

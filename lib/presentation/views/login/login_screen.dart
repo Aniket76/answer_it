@@ -1,4 +1,4 @@
-import 'package:answer_it/common/injection.dart';
+import 'package:answer_it/common/injection/injection.dart';
 import 'package:answer_it/presentation/views/login/cubit/login_cubit.dart';
 import 'package:answer_it/presentation/views/login/widgets/main_ui.dart';
 import 'package:flutter/material.dart';

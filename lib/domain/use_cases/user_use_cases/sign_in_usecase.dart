@@ -7,7 +7,7 @@ class SignInUseCase {
 
   SignInUseCase(this._userRepository);
 
-  Future<bool> signInWithEmailPassword(String emailAddress, String password) {
+  Future<String> signInWithEmailPassword(String emailAddress, String password) {
     return _userRepository.signInWithEmailPassword(emailAddress, password);
   }
 }

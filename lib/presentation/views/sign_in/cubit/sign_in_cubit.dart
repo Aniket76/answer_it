@@ -16,7 +16,7 @@ class SignInCubit extends Cubit<SignInState> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  Future<bool> signInUser() async {
+  Future<String> signInUser() async {
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
       var isSignedIn = await _signInUseCase.signInWithEmailPassword(
           emailController.text, passwordController.text);
@@ -24,7 +24,7 @@ class SignInCubit extends Cubit<SignInState> {
       return isSignedIn;
     } else {
       debugPrint('Enter email or password');
-      return false;
+      return 'Something went wrong';
     }
   }
 }

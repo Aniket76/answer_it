@@ -1,4 +1,4 @@
-import 'package:answer_it/common/injection.dart';
+import 'package:answer_it/common/injection/injection.dart';
 import 'package:answer_it/presentation/manager/route_manager.dart';
 import 'package:answer_it/presentation/views/sign_up/cubit/sign_up_cubit.dart';
 import 'package:answer_it/presentation/widgets/custom_button.dart';
@@ -30,7 +30,7 @@ class SignUpScreen extends StatelessWidget {
               child: Column(children: [
                 CustomTextField(
                   controller: cubit.nameController,
-                  labelText: 'Name',
+                  label: 'Name',
                   hintText: 'Enter Name',
                   errorText: state.nameError,
                 ),
@@ -39,7 +39,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 CustomTextField(
                   controller: cubit.emailController,
-                  labelText: 'Email',
+                  label: 'Email',
                   hintText: 'Enter Email',
                   errorText: state.emailError,
                 ),
@@ -48,7 +48,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 CustomTextField(
                   controller: cubit.passwordController,
-                  labelText: 'Password',
+                  label: 'Password',
                   hintText: 'Enter Password',
                   errorText: state.passwordError,
                 ),
@@ -57,7 +57,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 CustomTextField(
                   controller: cubit.dobController,
-                  labelText: 'DOB',
+                  label: 'DOB',
                   hintText: 'Enter DOB',
                   errorText: state.dobError,
                 ),

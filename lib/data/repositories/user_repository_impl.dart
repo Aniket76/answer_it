@@ -23,7 +23,7 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Future<bool> signInWithEmailPassword(String emailAddress, String password) {
+  Future<String> signInWithEmailPassword(String emailAddress, String password) {
     return cloudDS.signInWithEmailPassword(emailAddress, password);
   }
 

@@ -1,4 +1,4 @@
-import 'package:answer_it/common/injection.dart';
+import 'package:answer_it/common/injection/injection.dart';
 import 'package:answer_it/firebase_options.dart';
 import 'package:answer_it/presentation/manager/route_manager.dart';
 import 'package:firebase_core/firebase_core.dart';

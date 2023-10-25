@@ -1,4 +1,4 @@
-import 'package:answer_it/common/injection.dart';
+import 'package:answer_it/common/injection/injection.dart';
 import 'package:answer_it/presentation/manager/route_manager.dart';
 import 'package:answer_it/presentation/views/sign_in/cubit/sign_in_cubit.dart';
 import 'package:answer_it/presentation/widgets/custom_button.dart';
@@ -44,11 +44,18 @@ class SignInScreen extends StatelessWidget {
             CustomButton(
               onTap: () async {
                 var isLoggedIn = await cubit.signInUser();
-                if (isLoggedIn) {
+                if (isLoggedIn == 'Sign In Successful') {
                   Navigator.of(context).pushNamedAndRemoveUntil(
                       MobileRoutes.homeRoute, (Route<dynamic> route) => false);
                 } else {
-                  debugPrint('Something went wrong');
+                  debugPrint(isLoggedIn);
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text(isLoggedIn),
+                    backgroundColor: Colors.green,
+                    elevation: 2,
+                    behavior: SnackBarBehavior.floating,
+                    margin: const EdgeInsets.all(16),
+                  ));
                 }
               },
               buttonText: 'Sign In',

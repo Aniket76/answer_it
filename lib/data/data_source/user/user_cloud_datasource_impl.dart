@@ -16,7 +16,7 @@ class UserCloudDataSourceImpl extends UserCloudDataSource {
   }
 
   @override
-  Future<bool> signInWithEmailPassword(String emailAddress, String password) {
+  Future<String> signInWithEmailPassword(String emailAddress, String password) {
     return _userService.signInWithEmailPassword(emailAddress, password);
   }
 

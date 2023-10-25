@@ -1,4 +1,4 @@
-import 'package:answer_it/common/injection.dart';
+import 'package:answer_it/common/injection/injection.dart';
 import 'package:answer_it/presentation/manager/route_manager.dart';
 import 'package:answer_it/presentation/views/splash/cubit/splash_cubit.dart';
 import 'package:flutter/material.dart';

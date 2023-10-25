@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField(
       {required this.controller,
-      this.labelText,
+      this.label,
       this.hintText,
       this.errorText,
       super.key});
 
   final TextEditingController controller;
-  final String? labelText;
+  final String? label;
   final String? hintText;
   final String? errorText;
 
@@ -18,7 +18,7 @@ class CustomTextField extends StatelessWidget {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
-        label: (labelText != null) ? Text(labelText ?? '') : null,
+        label: Text(label ?? 'Label Text'),
         border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(12))),
         hintText: hintText,
