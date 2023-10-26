@@ -1,5 +1,6 @@
 import 'package:answer_it/common/data_resource/data_resource.dart';
 import 'package:answer_it/domain/use_cases/user_use_cases/sign_in_usecase.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -20,7 +21,7 @@ class SignInCubit extends Cubit<SignInState> {
   Future<void> signInUser() async {
     emit(state.copyWith(signInResource: const DataResource.loading()));
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-      _signInUseCase.invoke(
+      await _signInUseCase.invoke(
         callback: (resource) {
           emit(state.copyWith(signInResource: resource));
           // if (resource.isSuccess()) {

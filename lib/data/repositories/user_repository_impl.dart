@@ -4,6 +4,7 @@ import 'package:answer_it/data/data_source/user/user_datasource_factory.dart';
 import 'package:answer_it/data/models/user_model.dart';
 import 'package:answer_it/domain/entities/user_entity.dart';
 import 'package:answer_it/domain/repositories/user_repository.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: UserRepository)
@@ -23,7 +24,8 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Future<String> signInWithEmailPassword(String emailAddress, String password) {
+  Future<UserCredential> signInWithEmailPassword(
+      String emailAddress, String password) {
     return cloudDS.signInWithEmailPassword(emailAddress, password);
   }
 

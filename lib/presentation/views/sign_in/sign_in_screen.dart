@@ -50,6 +50,7 @@ class SignInScreen extends StatelessWidget {
                 return CustomButton(
                   onTap: () async {
                     await cubit.signInUser();
+                    debugPrint(state.signInResource.data?.user?.uid);
                     if (state.signInResource.isSuccess()) {
                       Navigator.of(context).pushNamedAndRemoveUntil(
                           MobileRoutes.homeRoute,

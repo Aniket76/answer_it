@@ -16,20 +16,22 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SignInState {
-  DataResource<String> get signInResource => throw _privateConstructorUsedError;
+  DataResource<UserCredential> get signInResource =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DataResource<String> signInResource) initial,
+    required TResult Function(DataResource<UserCredential> signInResource)
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DataResource<String> signInResource)? initial,
+    TResult? Function(DataResource<UserCredential> signInResource)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DataResource<String> signInResource)? initial,
+    TResult Function(DataResource<UserCredential> signInResource)? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +63,7 @@ abstract class $SignInStateCopyWith<$Res> {
           SignInState value, $Res Function(SignInState) then) =
       _$SignInStateCopyWithImpl<$Res, SignInState>;
   @useResult
-  $Res call({DataResource<String> signInResource});
+  $Res call({DataResource<UserCredential> signInResource});
 }
 
 /// @nodoc
@@ -83,7 +85,7 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
       signInResource: null == signInResource
           ? _value.signInResource
           : signInResource // ignore: cast_nullable_to_non_nullable
-              as DataResource<String>,
+              as DataResource<UserCredential>,
     ) as $Val);
   }
 }
@@ -95,7 +97,7 @@ abstract class _$$_InitialCopyWith<$Res> implements $SignInStateCopyWith<$Res> {
       __$$_InitialCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DataResource<String> signInResource});
+  $Res call({DataResource<UserCredential> signInResource});
 }
 
 /// @nodoc
@@ -114,7 +116,7 @@ class __$$_InitialCopyWithImpl<$Res>
       signInResource: null == signInResource
           ? _value.signInResource
           : signInResource // ignore: cast_nullable_to_non_nullable
-              as DataResource<String>,
+              as DataResource<UserCredential>,
     ));
   }
 }
@@ -127,7 +129,7 @@ class _$_Initial extends _Initial {
 
   @override
   @JsonKey()
-  final DataResource<String> signInResource;
+  final DataResource<UserCredential> signInResource;
 
   @override
   String toString() {
@@ -155,7 +157,8 @@ class _$_Initial extends _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DataResource<String> signInResource) initial,
+    required TResult Function(DataResource<UserCredential> signInResource)
+        initial,
   }) {
     return initial(signInResource);
   }
@@ -163,7 +166,7 @@ class _$_Initial extends _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DataResource<String> signInResource)? initial,
+    TResult? Function(DataResource<UserCredential> signInResource)? initial,
   }) {
     return initial?.call(signInResource);
   }
@@ -171,7 +174,7 @@ class _$_Initial extends _Initial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DataResource<String> signInResource)? initial,
+    TResult Function(DataResource<UserCredential> signInResource)? initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -210,12 +213,12 @@ class _$_Initial extends _Initial {
 }
 
 abstract class _Initial extends SignInState {
-  const factory _Initial({final DataResource<String> signInResource}) =
+  const factory _Initial({final DataResource<UserCredential> signInResource}) =
       _$_Initial;
   const _Initial._() : super._();
 
   @override
-  DataResource<String> get signInResource;
+  DataResource<UserCredential> get signInResource;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>

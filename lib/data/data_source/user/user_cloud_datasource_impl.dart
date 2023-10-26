@@ -2,6 +2,7 @@ import 'package:answer_it/data/data_source/user/user_cloud_datasource.dart';
 import 'package:answer_it/data/firebase/services/user_service.dart';
 import 'package:answer_it/data/models/user_model.dart';
 import 'package:answer_it/domain/entities/user_entity.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: UserCloudDataSource)
@@ -16,7 +17,8 @@ class UserCloudDataSourceImpl extends UserCloudDataSource {
   }
 
   @override
-  Future<String> signInWithEmailPassword(String emailAddress, String password) {
+  Future<UserCredential> signInWithEmailPassword(
+      String emailAddress, String password) {
     return _userService.signInWithEmailPassword(emailAddress, password);
   }
 

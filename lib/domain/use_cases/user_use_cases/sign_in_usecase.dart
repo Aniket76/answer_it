@@ -1,9 +1,11 @@
 import 'package:answer_it/common/default_usecase/default_usecase.dart';
 import 'package:answer_it/domain/repositories/user_repository.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class SignInUseCase extends DefaultUseCase<SignInWithEmailInput, String> {
+class SignInUseCase
+    extends DefaultUseCase<SignInWithEmailInput, UserCredential> {
   final UserRepository _userRepository;
 
   SignInUseCase(this._userRepository);
@@ -13,7 +15,7 @@ class SignInUseCase extends DefaultUseCase<SignInWithEmailInput, String> {
   // }
 
   @override
-  Future<String> run(SignInWithEmailInput input) {
+  Future<UserCredential> run(SignInWithEmailInput input) {
     return _userRepository.signInWithEmailPassword(
         input.emailAddress, input.password);
   }
