@@ -16,4 +16,8 @@ class HomeCubit extends Cubit<HomeState> {
     var signedOut = await _signOutUseCase.signOut();
     emit(state.copyWith(isUserLoggedIn: !(signedOut)));
   }
+
+  void onTabTapped(int index) {
+    emit(state.copyWith(currentBottomNavigationIndex: index));
+  }
 }

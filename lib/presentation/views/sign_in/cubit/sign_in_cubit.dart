@@ -24,19 +24,13 @@ class SignInCubit extends Cubit<SignInState> {
       await _signInUseCase.invoke(
         callback: (resource) {
           emit(state.copyWith(signInResource: resource));
-          // if (resource.isSuccess()) {
-          //   // NavigationManager.gotoOtpScreen(phoneNumber, resource.data);
-          // }
         },
         input:
             SignInWithEmailInput(emailController.text, passwordController.text),
       );
-
-      // return isSignedIn;
     } else {
       debugPrint('Enter email or password');
       emit(state.copyWith(signInResource: const DataResource.initial()));
-      // return 'Something went wrong';
     }
   }
 }

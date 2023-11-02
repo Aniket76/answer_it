@@ -20,8 +20,8 @@ class UserServiceImpl extends UserService {
       String emailAddress, String password) async {
     return FirebaseAuth.instance
         .signInWithEmailAndPassword(email: emailAddress, password: password);
-    // try {
 
+    // try {
     //   // return Future.value(true);
     //   return Future.value('Sign In Successful');
     // } on FirebaseAuthException catch (e) {

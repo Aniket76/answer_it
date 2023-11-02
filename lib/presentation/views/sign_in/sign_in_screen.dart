@@ -80,6 +80,7 @@ class SignInScreen extends StatelessWidget {
                     // ));
                     // }
                   },
+                  isLoding: state.signInResource.isLoading(),
                   buttonText: 'Sign In',
                   buttonColor: Colors.blueAccent.shade100,
                 );

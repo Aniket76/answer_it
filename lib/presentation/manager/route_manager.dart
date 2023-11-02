@@ -18,7 +18,7 @@ class RouteManager {
       case MobileRoutes.signUpRoute:
         return MaterialPageRoute(builder: (_) => SignUpScreen());
       case MobileRoutes.homeRoute:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(builder: (_) => HomeScreen());
       default:
         return errorScreen();
     }

@@ -17,19 +17,24 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomeState {
   bool get isUserLoggedIn => throw _privateConstructorUsedError;
+  int get currentBottomNavigationIndex => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isUserLoggedIn) initial,
+    required TResult Function(
+            bool isUserLoggedIn, int currentBottomNavigationIndex)
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isUserLoggedIn)? initial,
+    TResult? Function(bool isUserLoggedIn, int currentBottomNavigationIndex)?
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isUserLoggedIn)? initial,
+    TResult Function(bool isUserLoggedIn, int currentBottomNavigationIndex)?
+        initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,7 +65,7 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({bool isUserLoggedIn});
+  $Res call({bool isUserLoggedIn, int currentBottomNavigationIndex});
 }
 
 /// @nodoc
@@ -77,12 +82,17 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @override
   $Res call({
     Object? isUserLoggedIn = null,
+    Object? currentBottomNavigationIndex = null,
   }) {
     return _then(_value.copyWith(
       isUserLoggedIn: null == isUserLoggedIn
           ? _value.isUserLoggedIn
           : isUserLoggedIn // ignore: cast_nullable_to_non_nullable
               as bool,
+      currentBottomNavigationIndex: null == currentBottomNavigationIndex
+          ? _value.currentBottomNavigationIndex
+          : currentBottomNavigationIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -94,7 +104,7 @@ abstract class _$$_InitialCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
       __$$_InitialCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isUserLoggedIn});
+  $Res call({bool isUserLoggedIn, int currentBottomNavigationIndex});
 }
 
 /// @nodoc
@@ -108,12 +118,17 @@ class __$$_InitialCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isUserLoggedIn = null,
+    Object? currentBottomNavigationIndex = null,
   }) {
     return _then(_$_Initial(
       isUserLoggedIn: null == isUserLoggedIn
           ? _value.isUserLoggedIn
           : isUserLoggedIn // ignore: cast_nullable_to_non_nullable
               as bool,
+      currentBottomNavigationIndex: null == currentBottomNavigationIndex
+          ? _value.currentBottomNavigationIndex
+          : currentBottomNavigationIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -121,15 +136,20 @@ class __$$_InitialCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Initial extends _Initial {
-  const _$_Initial({this.isUserLoggedIn = true}) : super._();
+  const _$_Initial(
+      {this.isUserLoggedIn = true, this.currentBottomNavigationIndex = 0})
+      : super._();
 
   @override
   @JsonKey()
   final bool isUserLoggedIn;
+  @override
+  @JsonKey()
+  final int currentBottomNavigationIndex;
 
   @override
   String toString() {
-    return 'HomeState.initial(isUserLoggedIn: $isUserLoggedIn)';
+    return 'HomeState.initial(isUserLoggedIn: $isUserLoggedIn, currentBottomNavigationIndex: $currentBottomNavigationIndex)';
   }
 
   @override
@@ -138,11 +158,16 @@ class _$_Initial extends _Initial {
         (other.runtimeType == runtimeType &&
             other is _$_Initial &&
             (identical(other.isUserLoggedIn, isUserLoggedIn) ||
-                other.isUserLoggedIn == isUserLoggedIn));
+                other.isUserLoggedIn == isUserLoggedIn) &&
+            (identical(other.currentBottomNavigationIndex,
+                    currentBottomNavigationIndex) ||
+                other.currentBottomNavigationIndex ==
+                    currentBottomNavigationIndex));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isUserLoggedIn);
+  int get hashCode =>
+      Object.hash(runtimeType, isUserLoggedIn, currentBottomNavigationIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -153,27 +178,31 @@ class _$_Initial extends _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isUserLoggedIn) initial,
+    required TResult Function(
+            bool isUserLoggedIn, int currentBottomNavigationIndex)
+        initial,
   }) {
-    return initial(isUserLoggedIn);
+    return initial(isUserLoggedIn, currentBottomNavigationIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isUserLoggedIn)? initial,
+    TResult? Function(bool isUserLoggedIn, int currentBottomNavigationIndex)?
+        initial,
   }) {
-    return initial?.call(isUserLoggedIn);
+    return initial?.call(isUserLoggedIn, currentBottomNavigationIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isUserLoggedIn)? initial,
+    TResult Function(bool isUserLoggedIn, int currentBottomNavigationIndex)?
+        initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(isUserLoggedIn);
+      return initial(isUserLoggedIn, currentBottomNavigationIndex);
     }
     return orElse();
   }
@@ -208,11 +237,15 @@ class _$_Initial extends _Initial {
 }
 
 abstract class _Initial extends HomeState {
-  const factory _Initial({final bool isUserLoggedIn}) = _$_Initial;
+  const factory _Initial(
+      {final bool isUserLoggedIn,
+      final int currentBottomNavigationIndex}) = _$_Initial;
   const _Initial._() : super._();
 
   @override
   bool get isUserLoggedIn;
+  @override
+  int get currentBottomNavigationIndex;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>
