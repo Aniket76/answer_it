@@ -2,6 +2,7 @@ import 'package:answer_it/common/injection/injection.dart';
 import 'package:answer_it/presentation/manager/route_manager.dart';
 import 'package:answer_it/presentation/views/sign_in/cubit/sign_in_cubit.dart';
 import 'package:answer_it/presentation/widgets/custom_button.dart';
+import 'package:answer_it/presentation/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,31 +19,30 @@ class SignInScreen extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Sign Up'),
+          title: const Text('Sign In'),
           centerTitle: true,
         ),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(children: [
-              TextField(
+              CustomTextField(
                 controller: cubit.emailController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter Email',
-                ),
+                label: 'Email',
+                hintText: 'Enter Email',
               ),
               const SizedBox(
                 height: 16,
               ),
-              TextField(
-                controller: cubit.passwordController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
+              BlocBuilder<SignInCubit, SignInState>(builder: (context, state) {
+                return CustomTextField(
+                  controller: cubit.passwordController,
+                  label: 'Password',
                   hintText: 'Enter Password',
-                ),
-                keyboardType: TextInputType.visiblePassword,
-              ),
+                  isPasswordHidden: state.isPasswordHidden,
+                  onPasswordIconTap: cubit.passwordIconToggle,
+                );
+              }),
               const SizedBox(
                 height: 16,
               ),

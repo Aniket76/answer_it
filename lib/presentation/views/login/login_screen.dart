@@ -16,6 +16,7 @@ class LoginScreen extends StatelessWidget {
         return cubit;
       },
       child: Scaffold(
+        backgroundColor: Color.fromARGB(255, 0, 13, 36),
         body: mainUI(cubit: cubit, context: context),
       ),
     );

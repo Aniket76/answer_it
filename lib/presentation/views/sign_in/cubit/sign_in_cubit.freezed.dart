@@ -18,20 +18,26 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SignInState {
   DataResource<UserCredential> get signInResource =>
       throw _privateConstructorUsedError;
+  bool get isPasswordHidden => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DataResource<UserCredential> signInResource)
+    required TResult Function(
+            DataResource<UserCredential> signInResource, bool isPasswordHidden)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DataResource<UserCredential> signInResource)? initial,
+    TResult? Function(
+            DataResource<UserCredential> signInResource, bool isPasswordHidden)?
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DataResource<UserCredential> signInResource)? initial,
+    TResult Function(
+            DataResource<UserCredential> signInResource, bool isPasswordHidden)?
+        initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,7 +69,8 @@ abstract class $SignInStateCopyWith<$Res> {
           SignInState value, $Res Function(SignInState) then) =
       _$SignInStateCopyWithImpl<$Res, SignInState>;
   @useResult
-  $Res call({DataResource<UserCredential> signInResource});
+  $Res call(
+      {DataResource<UserCredential> signInResource, bool isPasswordHidden});
 }
 
 /// @nodoc
@@ -80,12 +87,17 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
   @override
   $Res call({
     Object? signInResource = null,
+    Object? isPasswordHidden = null,
   }) {
     return _then(_value.copyWith(
       signInResource: null == signInResource
           ? _value.signInResource
           : signInResource // ignore: cast_nullable_to_non_nullable
               as DataResource<UserCredential>,
+      isPasswordHidden: null == isPasswordHidden
+          ? _value.isPasswordHidden
+          : isPasswordHidden // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -97,7 +109,8 @@ abstract class _$$_InitialCopyWith<$Res> implements $SignInStateCopyWith<$Res> {
       __$$_InitialCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DataResource<UserCredential> signInResource});
+  $Res call(
+      {DataResource<UserCredential> signInResource, bool isPasswordHidden});
 }
 
 /// @nodoc
@@ -111,12 +124,17 @@ class __$$_InitialCopyWithImpl<$Res>
   @override
   $Res call({
     Object? signInResource = null,
+    Object? isPasswordHidden = null,
   }) {
     return _then(_$_Initial(
       signInResource: null == signInResource
           ? _value.signInResource
           : signInResource // ignore: cast_nullable_to_non_nullable
               as DataResource<UserCredential>,
+      isPasswordHidden: null == isPasswordHidden
+          ? _value.isPasswordHidden
+          : isPasswordHidden // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -124,16 +142,21 @@ class __$$_InitialCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Initial extends _Initial {
-  const _$_Initial({this.signInResource = const DataResource.initial()})
+  const _$_Initial(
+      {this.signInResource = const DataResource.initial(),
+      this.isPasswordHidden = true})
       : super._();
 
   @override
   @JsonKey()
   final DataResource<UserCredential> signInResource;
+  @override
+  @JsonKey()
+  final bool isPasswordHidden;
 
   @override
   String toString() {
-    return 'SignInState.initial(signInResource: $signInResource)';
+    return 'SignInState.initial(signInResource: $signInResource, isPasswordHidden: $isPasswordHidden)';
   }
 
   @override
@@ -142,11 +165,14 @@ class _$_Initial extends _Initial {
         (other.runtimeType == runtimeType &&
             other is _$_Initial &&
             (identical(other.signInResource, signInResource) ||
-                other.signInResource == signInResource));
+                other.signInResource == signInResource) &&
+            (identical(other.isPasswordHidden, isPasswordHidden) ||
+                other.isPasswordHidden == isPasswordHidden));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, signInResource);
+  int get hashCode =>
+      Object.hash(runtimeType, signInResource, isPasswordHidden);
 
   @JsonKey(ignore: true)
   @override
@@ -157,28 +183,33 @@ class _$_Initial extends _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DataResource<UserCredential> signInResource)
+    required TResult Function(
+            DataResource<UserCredential> signInResource, bool isPasswordHidden)
         initial,
   }) {
-    return initial(signInResource);
+    return initial(signInResource, isPasswordHidden);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DataResource<UserCredential> signInResource)? initial,
+    TResult? Function(
+            DataResource<UserCredential> signInResource, bool isPasswordHidden)?
+        initial,
   }) {
-    return initial?.call(signInResource);
+    return initial?.call(signInResource, isPasswordHidden);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DataResource<UserCredential> signInResource)? initial,
+    TResult Function(
+            DataResource<UserCredential> signInResource, bool isPasswordHidden)?
+        initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(signInResource);
+      return initial(signInResource, isPasswordHidden);
     }
     return orElse();
   }
@@ -213,12 +244,15 @@ class _$_Initial extends _Initial {
 }
 
 abstract class _Initial extends SignInState {
-  const factory _Initial({final DataResource<UserCredential> signInResource}) =
-      _$_Initial;
+  const factory _Initial(
+      {final DataResource<UserCredential> signInResource,
+      final bool isPasswordHidden}) = _$_Initial;
   const _Initial._() : super._();
 
   @override
   DataResource<UserCredential> get signInResource;
+  @override
+  bool get isPasswordHidden;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>
