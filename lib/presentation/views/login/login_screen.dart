@@ -1,4 +1,5 @@
 import 'package:answer_it/common/injection/injection.dart';
+import 'package:answer_it/presentation/manager/color_manager.dart';
 import 'package:answer_it/presentation/views/login/cubit/login_cubit.dart';
 import 'package:answer_it/presentation/views/login/widgets/main_ui.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class LoginScreen extends StatelessWidget {
         return cubit;
       },
       child: Scaffold(
-        backgroundColor: Color.fromARGB(255, 0, 13, 36),
+        backgroundColor: ColorManager.baseBackgroundColor,
         body: mainUI(cubit: cubit, context: context),
       ),
     );

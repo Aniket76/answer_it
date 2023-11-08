@@ -30,17 +30,18 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Future<bool> signOut() {
+  Future<void> signOut() {
     return cloudDS.signOut();
   }
 
   @override
-  Future<bool> signUpWithEmailPassword(String emailAddress, String password) {
+  Future<UserCredential> signUpWithEmailPassword(
+      String emailAddress, String password) {
     return cloudDS.signUpWithEmailPassword(emailAddress, password);
   }
 
   @override
-  Future<bool> updateUser(UserModel input) {
+  Future<void> updateUser(UserModel input) {
     return cloudDS.updateUser(input);
   }
 }

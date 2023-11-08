@@ -10,10 +10,6 @@ class SignInUseCase
 
   SignInUseCase(this._userRepository);
 
-  // Future<String> signInWithEmailPassword(String emailAddress, String password) {
-  //   return _userRepository.signInWithEmailPassword(emailAddress, password);
-  // }
-
   @override
   Future<UserCredential> run(SignInWithEmailInput input) {
     return _userRepository.signInWithEmailPassword(

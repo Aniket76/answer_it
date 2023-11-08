@@ -1,4 +1,5 @@
 import 'package:answer_it/common/injection/injection.dart';
+import 'package:answer_it/presentation/manager/color_manager.dart';
 import 'package:answer_it/presentation/manager/route_manager.dart';
 import 'package:answer_it/presentation/views/sign_up/cubit/sign_up_cubit.dart';
 import 'package:answer_it/presentation/widgets/custom_button.dart';
@@ -18,10 +19,11 @@ class SignUpScreen extends StatelessWidget {
         return cubit;
       },
       child: Scaffold(
+        backgroundColor: ColorManager.baseBackgroundColor,
         appBar: AppBar(
-          title: const Text('Sign Up'),
-          centerTitle: true,
-        ),
+            title: const Text('Sign Up'),
+            centerTitle: true,
+            backgroundColor: ColorManager.appBarColorColor),
         body: SafeArea(
           child:
               BlocBuilder<SignUpCubit, SignUpState>(builder: (context, state) {
@@ -66,13 +68,21 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 CustomButton(
                   onTap: () async {
-                    var isLoggedIn = await cubit.createAccount();
-                    if (isLoggedIn) {
+                    await cubit.createAccount();
+                    if (state.signUpResource.isSuccess()) {
                       Navigator.of(context).pushNamedAndRemoveUntil(
                           MobileRoutes.homeRoute,
                           (Route<dynamic> route) => false);
                     } else {
-                      debugPrint('Something went wrong');
+                      debugPrint(state.signUpResource.failure?.message);
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content:
+                            Text(state.signUpResource.failure?.message ?? ''),
+                        backgroundColor: Colors.green,
+                        elevation: 2,
+                        behavior: SnackBarBehavior.floating,
+                        margin: const EdgeInsets.all(16),
+                      ));
                     }
                   },
                   buttonText: 'Create Account',

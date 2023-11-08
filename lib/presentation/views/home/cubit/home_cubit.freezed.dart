@@ -18,22 +18,30 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomeState {
   bool get isUserLoggedIn => throw _privateConstructorUsedError;
   int get currentBottomNavigationIndex => throw _privateConstructorUsedError;
+  String get screenName => throw _privateConstructorUsedError;
+  DataResource<UserEntity> get userResponse =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            bool isUserLoggedIn, int currentBottomNavigationIndex)
+            bool isUserLoggedIn,
+            int currentBottomNavigationIndex,
+            String screenName,
+            DataResource<UserEntity> userResponse)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isUserLoggedIn, int currentBottomNavigationIndex)?
+    TResult? Function(bool isUserLoggedIn, int currentBottomNavigationIndex,
+            String screenName, DataResource<UserEntity> userResponse)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isUserLoggedIn, int currentBottomNavigationIndex)?
+    TResult Function(bool isUserLoggedIn, int currentBottomNavigationIndex,
+            String screenName, DataResource<UserEntity> userResponse)?
         initial,
     required TResult orElse(),
   }) =>
@@ -65,7 +73,11 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({bool isUserLoggedIn, int currentBottomNavigationIndex});
+  $Res call(
+      {bool isUserLoggedIn,
+      int currentBottomNavigationIndex,
+      String screenName,
+      DataResource<UserEntity> userResponse});
 }
 
 /// @nodoc
@@ -83,6 +95,8 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   $Res call({
     Object? isUserLoggedIn = null,
     Object? currentBottomNavigationIndex = null,
+    Object? screenName = null,
+    Object? userResponse = null,
   }) {
     return _then(_value.copyWith(
       isUserLoggedIn: null == isUserLoggedIn
@@ -93,6 +107,14 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.currentBottomNavigationIndex
           : currentBottomNavigationIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      screenName: null == screenName
+          ? _value.screenName
+          : screenName // ignore: cast_nullable_to_non_nullable
+              as String,
+      userResponse: null == userResponse
+          ? _value.userResponse
+          : userResponse // ignore: cast_nullable_to_non_nullable
+              as DataResource<UserEntity>,
     ) as $Val);
   }
 }
@@ -104,7 +126,11 @@ abstract class _$$_InitialCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
       __$$_InitialCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isUserLoggedIn, int currentBottomNavigationIndex});
+  $Res call(
+      {bool isUserLoggedIn,
+      int currentBottomNavigationIndex,
+      String screenName,
+      DataResource<UserEntity> userResponse});
 }
 
 /// @nodoc
@@ -119,6 +145,8 @@ class __$$_InitialCopyWithImpl<$Res>
   $Res call({
     Object? isUserLoggedIn = null,
     Object? currentBottomNavigationIndex = null,
+    Object? screenName = null,
+    Object? userResponse = null,
   }) {
     return _then(_$_Initial(
       isUserLoggedIn: null == isUserLoggedIn
@@ -129,6 +157,14 @@ class __$$_InitialCopyWithImpl<$Res>
           ? _value.currentBottomNavigationIndex
           : currentBottomNavigationIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      screenName: null == screenName
+          ? _value.screenName
+          : screenName // ignore: cast_nullable_to_non_nullable
+              as String,
+      userResponse: null == userResponse
+          ? _value.userResponse
+          : userResponse // ignore: cast_nullable_to_non_nullable
+              as DataResource<UserEntity>,
     ));
   }
 }
@@ -137,7 +173,10 @@ class __$$_InitialCopyWithImpl<$Res>
 
 class _$_Initial extends _Initial {
   const _$_Initial(
-      {this.isUserLoggedIn = true, this.currentBottomNavigationIndex = 0})
+      {this.isUserLoggedIn = true,
+      this.currentBottomNavigationIndex = 0,
+      this.screenName = 'Chat Screen',
+      this.userResponse = const DataResource.initial()})
       : super._();
 
   @override
@@ -146,10 +185,16 @@ class _$_Initial extends _Initial {
   @override
   @JsonKey()
   final int currentBottomNavigationIndex;
+  @override
+  @JsonKey()
+  final String screenName;
+  @override
+  @JsonKey()
+  final DataResource<UserEntity> userResponse;
 
   @override
   String toString() {
-    return 'HomeState.initial(isUserLoggedIn: $isUserLoggedIn, currentBottomNavigationIndex: $currentBottomNavigationIndex)';
+    return 'HomeState.initial(isUserLoggedIn: $isUserLoggedIn, currentBottomNavigationIndex: $currentBottomNavigationIndex, screenName: $screenName, userResponse: $userResponse)';
   }
 
   @override
@@ -162,12 +207,16 @@ class _$_Initial extends _Initial {
             (identical(other.currentBottomNavigationIndex,
                     currentBottomNavigationIndex) ||
                 other.currentBottomNavigationIndex ==
-                    currentBottomNavigationIndex));
+                    currentBottomNavigationIndex) &&
+            (identical(other.screenName, screenName) ||
+                other.screenName == screenName) &&
+            (identical(other.userResponse, userResponse) ||
+                other.userResponse == userResponse));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, isUserLoggedIn, currentBottomNavigationIndex);
+  int get hashCode => Object.hash(runtimeType, isUserLoggedIn,
+      currentBottomNavigationIndex, screenName, userResponse);
 
   @JsonKey(ignore: true)
   @override
@@ -179,30 +228,38 @@ class _$_Initial extends _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            bool isUserLoggedIn, int currentBottomNavigationIndex)
+            bool isUserLoggedIn,
+            int currentBottomNavigationIndex,
+            String screenName,
+            DataResource<UserEntity> userResponse)
         initial,
   }) {
-    return initial(isUserLoggedIn, currentBottomNavigationIndex);
+    return initial(
+        isUserLoggedIn, currentBottomNavigationIndex, screenName, userResponse);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isUserLoggedIn, int currentBottomNavigationIndex)?
+    TResult? Function(bool isUserLoggedIn, int currentBottomNavigationIndex,
+            String screenName, DataResource<UserEntity> userResponse)?
         initial,
   }) {
-    return initial?.call(isUserLoggedIn, currentBottomNavigationIndex);
+    return initial?.call(
+        isUserLoggedIn, currentBottomNavigationIndex, screenName, userResponse);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isUserLoggedIn, int currentBottomNavigationIndex)?
+    TResult Function(bool isUserLoggedIn, int currentBottomNavigationIndex,
+            String screenName, DataResource<UserEntity> userResponse)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(isUserLoggedIn, currentBottomNavigationIndex);
+      return initial(isUserLoggedIn, currentBottomNavigationIndex, screenName,
+          userResponse);
     }
     return orElse();
   }
@@ -239,13 +296,19 @@ class _$_Initial extends _Initial {
 abstract class _Initial extends HomeState {
   const factory _Initial(
       {final bool isUserLoggedIn,
-      final int currentBottomNavigationIndex}) = _$_Initial;
+      final int currentBottomNavigationIndex,
+      final String screenName,
+      final DataResource<UserEntity> userResponse}) = _$_Initial;
   const _Initial._() : super._();
 
   @override
   bool get isUserLoggedIn;
   @override
   int get currentBottomNavigationIndex;
+  @override
+  String get screenName;
+  @override
+  DataResource<UserEntity> get userResponse;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>

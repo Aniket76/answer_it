@@ -1,16 +1,21 @@
 import 'package:answer_it/common/injection/injection.dart';
-import 'package:answer_it/presentation/manager/route_manager.dart';
+import 'package:answer_it/presentation/manager/color_manager.dart';
 import 'package:answer_it/presentation/views/home/cubit/home_cubit.dart';
+import 'package:answer_it/presentation/views/home/tabs/chat_screen.dart';
+import 'package:answer_it/presentation/views/home/tabs/profile_screen.dart';
+import 'package:answer_it/presentation/views/home/tabs/request_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 var cubit = getIt<HomeCubit>();
 
 class HomeScreen extends StatelessWidget {
-  final List<Widget> _children = [
-    Tab1(),
-    Tab2(),
-    Tab3(),
+  final List<Widget> _tabScreen = [
+    const ChatScreen(),
+    const RequestScreen(),
+    ProfileScreen(
+      cubit: cubit,
+    ),
   ];
 
   @override
@@ -22,16 +27,21 @@ class HomeScreen extends StatelessWidget {
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           return Scaffold(
+            backgroundColor: ColorManager.baseBackgroundColor,
             appBar: AppBar(
-              title: const Text(
-                'Answer It',
+              title: Text(
+                state.screenName,
               ),
-              backgroundColor: Colors.orange,
+              backgroundColor: ColorManager.appBarColorColor,
             ),
-            body: _children[state.currentBottomNavigationIndex],
+            body: _tabScreen[state.currentBottomNavigationIndex],
             bottomNavigationBar: BottomNavigationBar(
+              backgroundColor: ColorManager.appBarColorColor,
+              elevation: 20,
               onTap: cubit.onTabTapped,
               currentIndex: state.currentBottomNavigationIndex,
+              selectedItemColor: ColorManager.headerTextColor,
+              unselectedItemColor: Colors.blueGrey,
               items: const [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.chat),
@@ -50,51 +60,6 @@ class HomeScreen extends StatelessWidget {
           );
         },
       ),
-    );
-  }
-}
-
-class Tab1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Tab 1 Content'),
-    );
-  }
-}
-
-class Tab2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Tab 2 Content'),
-    );
-  }
-}
-
-class Tab3 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text('Welcome'),
-        BlocBuilder<HomeCubit, HomeState>(buildWhen: (p, c) {
-          return p.isUserLoggedIn != c.isUserLoggedIn;
-        }, builder: (context, state) {
-          return OutlinedButton(
-            onPressed: () async {
-              await cubit.signOut();
-              if (!(state.isUserLoggedIn)) {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                    MobileRoutes.loginRoute, (route) => false);
-              } else {
-                debugPrint('Something went wrong');
-              }
-            },
-            child: Text('Sign Out'),
-          );
-        }),
-      ],
     );
   }
 }

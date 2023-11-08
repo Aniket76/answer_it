@@ -1,3 +1,4 @@
+import 'package:answer_it/presentation/manager/color_manager.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -35,9 +36,9 @@ class CustomTextField extends StatelessWidget {
                   onPressed: onPasswordIconTap?.call,
                   icon: Icon(
                     isPasswordHidden ?? true
-                        ? Icons.visibility
-                        : Icons.visibility_off,
-                    color: Theme.of(context).primaryColorDark,
+                        ? Icons.visibility_off
+                        : Icons.visibility,
+                    color: ColorManager.headerTextColor,
                   ),
                 )),
     );

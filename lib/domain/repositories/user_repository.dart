@@ -6,11 +6,12 @@ abstract class UserRepository {
   Future<UserCredential> signInWithEmailPassword(
       String emailAddress, String password);
 
-  Future<bool> signUpWithEmailPassword(String emailAddress, String password);
+  Future<UserCredential> signUpWithEmailPassword(
+      String emailAddress, String password);
 
-  Future<bool> signOut();
+  Future<void> signOut();
 
-  Future<bool> updateUser(UserModel input);
+  Future<void> updateUser(UserModel input);
 
   Future<UserEntity> getUser();
 }

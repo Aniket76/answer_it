@@ -1,4 +1,5 @@
 import 'package:answer_it/common/injection/injection.dart';
+import 'package:answer_it/presentation/manager/color_manager.dart';
 import 'package:answer_it/presentation/manager/json_manager.dart';
 import 'package:answer_it/presentation/manager/route_manager.dart';
 import 'package:answer_it/presentation/views/splash/cubit/splash_cubit.dart';
@@ -21,7 +22,7 @@ class SplashScreen extends StatelessWidget {
       },
       lazy: false,
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 0, 24, 66),
+        backgroundColor: ColorManager.baseBackgroundColor,
         body: BlocListener<SplashCubit, SplashState>(
           listener: (context, state) {
             if (state.isUserLoggedIn) {

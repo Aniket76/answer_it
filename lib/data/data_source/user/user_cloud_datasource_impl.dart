@@ -23,17 +23,18 @@ class UserCloudDataSourceImpl extends UserCloudDataSource {
   }
 
   @override
-  Future<bool> signOut() {
+  Future<void> signOut() {
     return _userService.signOut();
   }
 
   @override
-  Future<bool> signUpWithEmailPassword(String emailAddress, String password) {
+  Future<UserCredential> signUpWithEmailPassword(
+      String emailAddress, String password) {
     return _userService.signUpWithEmailPassword(emailAddress, password);
   }
 
   @override
-  Future<bool> updateUser(UserModel input) {
+  Future<void> updateUser(UserModel input) {
     return _userService.updateUser(input);
   }
 }

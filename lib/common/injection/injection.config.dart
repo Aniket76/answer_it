@@ -65,7 +65,10 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i17.SignUpUseCase(gh<_i12.UserRepository>()));
     gh.factory<_i18.UpdateUserUseCase>(
         () => _i18.UpdateUserUseCase(gh<_i12.UserRepository>()));
-    gh.factory<_i19.HomeCubit>(() => _i19.HomeCubit(gh<_i16.SignOutUseCase>()));
+    gh.factory<_i19.HomeCubit>(() => _i19.HomeCubit(
+          gh<_i16.SignOutUseCase>(),
+          gh<_i14.GetUserUseCase>(),
+        ));
     gh.factory<_i20.SignInCubit>(
         () => _i20.SignInCubit(gh<_i15.SignInUseCase>()));
     gh.factory<_i21.SignUpCubit>(() => _i21.SignUpCubit(

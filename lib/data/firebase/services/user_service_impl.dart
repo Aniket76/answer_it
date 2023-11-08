@@ -37,41 +37,37 @@ class UserServiceImpl extends UserService {
   }
 
   @override
-  Future<bool> signOut() async {
+  Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
-    return Future.value(true);
   }
 
   @override
-  Future<bool> signUpWithEmailPassword(
+  Future<UserCredential> signUpWithEmailPassword(
       String emailAddress, String password) async {
-    try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailAddress,
-        password: password,
-      );
-      return Future.value(true);
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-      }
-      return Future.value(false);
-    } catch (e) {
-      print(e);
-      return Future.value(false);
-    }
+    return await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: emailAddress,
+      password: password,
+    );
+    // try {
+
+    //   return Future.value(true);
+    // } on FirebaseAuthException catch (e) {
+    //   if (e.code == 'weak-password') {
+    //     print('The password provided is too weak.');
+    //   } else if (e.code == 'email-already-in-use') {
+    //     print('The account already exists for that email.');
+    //   }
+    //   return Future.value(false);
+    // } catch (e) {
+    //   print(e);
+    //   return Future.value(false);
+    // }
   }
 
   @override
-  Future<bool> updateUser(UserModel input) async {
-    try {
-      await FirestoreDatabaseReferance.usersColRef().add(input.toDocument());
-      return Future.value(true);
-    } catch (e) {
-      print(e);
-      return Future.value(false);
-    }
+  Future<void> updateUser(UserModel input) async {
+    await FirestoreDatabaseReferance.usersColRef()
+        .doc('is')
+        .set(input.toDocument());
   }
 }

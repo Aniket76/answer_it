@@ -1,4 +1,5 @@
 import 'package:answer_it/common/injection/injection.dart';
+import 'package:answer_it/presentation/manager/color_manager.dart';
 import 'package:answer_it/presentation/manager/route_manager.dart';
 import 'package:answer_it/presentation/views/sign_in/cubit/sign_in_cubit.dart';
 import 'package:answer_it/presentation/widgets/custom_button.dart';
@@ -18,9 +19,11 @@ class SignInScreen extends StatelessWidget {
         return cubit;
       },
       child: Scaffold(
+        backgroundColor: ColorManager.baseBackgroundColor,
         appBar: AppBar(
           title: const Text('Sign In'),
           centerTitle: true,
+          backgroundColor: ColorManager.appBarColorColor,
         ),
         body: SafeArea(
           child: Padding(
